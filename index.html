@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kevin & Mariel</title>
+
+<style>
+/* =====================
+   GLOBAL
+===================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f2;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* =====================
+   LOADER
+===================== */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeOut 0.8s ease forwards;
+    animation-delay: 2s;
+}
+
+.loader-content {
+    animation: float 1.6s ease-in-out infinite;
+}
+
+.loader-content img {
+    width: 110px;
+}
+
+/* =====================
+   MAIN CONTENT
+===================== */
+#content {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 2.3s;
+}
+
+.wrapper {
+    min-height: 100svh;
+    width: 100%;
+    background: url('assets/background.png') center / cover no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 48px 20px;
+}
+
+/* =====================
+   MONOGRAM
+===================== */
+.monogram {
+    width: min(280px, 70vw);
+    margin-bottom: 36px;
+
+    opacity: 0;
+    filter: blur(2px);
+
+    animation: monogramPress 1.4s ease forwards;
+    animation-delay: 2.6s;
+}
+
+/* =====================
+   OPEN BUTTON
+===================== */
+.open-btn {
+    width: min(260px, 80vw);
+    cursor: pointer;
+
+    opacity: 0;
+    transform: translateY(14px);
+
+    animation: buttonReveal 1.1s ease forwards;
+    animation-delay: 3.4s;
+}
+
+.open-btn:active {
+    transform: scale(0.97);
+}
+
+/* =====================
+   MOBILE TUNING
+===================== */
+@media (max-width: 768px) {
+    .monogram {
+        width: 190px;
+        margin-bottom: 28px;
+    }
+
+    .open-btn {
+        width: 220px;
+    }
+}
+
+/* =====================
+   ANIMATIONS
+===================== */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes monogramPress {
+    0% {
+        opacity: 0;
+        filter: blur(2px);
+        transform: scale(0.96);
+    }
+    60% {
+        opacity: 1;
+        filter: blur(0.5px);
+        transform: scale(1.01);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+    }
+}
+
+@keyframes buttonReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-content">
+        <img src="assets/loader-plane.svg" alt="Loading">
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="content">
+    <div class="wrapper">
+        <img src="assets/km-monogram.png" class="monogram" alt="KM Monogram">
+
+        <a href="invitation.html">
+            <img src="assets/open-invitation.png" class="open-btn" alt="Open Invitation">
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
