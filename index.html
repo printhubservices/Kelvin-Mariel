@@ -9,21 +9,26 @@
 /* =====================
    GLOBAL
 ===================== */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #f4f4f2;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /* =====================
-   LOADER (soft blur)
+   LOADER
 ===================== */
 #loader {
     position: fixed;
     inset: 0;
+    background: rgba(255,255,255,0.7);
     backdrop-filter: blur(6px);
-    background: rgba(255, 255, 255, 0.65);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,18 +37,12 @@ body {
     animation-delay: 2s;
 }
 
-@supports not (backdrop-filter: blur(6px)) {
-    #loader {
-        background: rgba(255,255,255,0.9);
-    }
-}
-
 .loader-content {
     animation: float 1.6s ease-in-out infinite;
 }
 
 .loader-content img {
-    width: 120px;
+    width: 110px;
 }
 
 /* =====================
@@ -52,41 +51,29 @@ body {
 #content {
     opacity: 0;
     animation: fadeIn 1s ease forwards;
-    animation-delay: 2.4s;
+    animation-delay: 2.3s;
 }
 
 .wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
     min-height: 100svh;
-    margin: auto;
+    width: 100%;
     background: url('assets/background.png') center / cover no-repeat;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
+    padding: 48px 20px;
 }
 
-
 /* =====================
-   MONOGRAM – LETTER PRESS
+   MONOGRAM
 ===================== */
 .monogram {
     width: min(280px, 70vw);
-    margin-bottom: 40px;
+    margin-bottom: 36px;
 
-    transform: scale(0.96);
-    opacity: 0;
-    filter: blur(2px);
-
-    animation: monogramPress 1.4s ease forwards;
-    animation-delay: 2.6s;
-}
-    width: min(280px, 70vw);
-
-    transform: translate(-50%, -50%) scale(0.96);
     opacity: 0;
     filter: blur(2px);
 
@@ -95,10 +82,10 @@ body {
 }
 
 /* =====================
-   OPEN INVITATION – SOFT RISE
+   OPEN BUTTON
 ===================== */
 .open-btn {
-    width: min(260px, 75vw);
+    width: min(260px, 80vw);
     cursor: pointer;
 
     opacity: 0;
@@ -108,18 +95,21 @@ body {
     animation-delay: 3.4s;
 }
 
+.open-btn:active {
+    transform: scale(0.97);
+}
 
 /* =====================
-   MOBILE
+   MOBILE TUNING
 ===================== */
 @media (max-width: 768px) {
     .monogram {
-        width: 180px;
-        top: 38%;
+        width: 190px;
+        margin-bottom: 28px;
     }
 
     .open-btn {
-        width: 200px;
+        width: 220px;
     }
 }
 
@@ -128,7 +118,7 @@ body {
 ===================== */
 @keyframes float {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-8px); }
 }
 
 @keyframes fadeOut {
@@ -139,30 +129,28 @@ body {
     to { opacity: 1; }
 }
 
-/* Letter-press reveal */
 @keyframes monogramPress {
     0% {
         opacity: 0;
         filter: blur(2px);
-        transform: translate(-50%, -50%) scale(0.96);
+        transform: scale(0.96);
     }
     60% {
         opacity: 1;
         filter: blur(0.5px);
-        transform: translate(-50%, -50%) scale(1.01);
+        transform: scale(1.01);
     }
     100% {
         opacity: 1;
         filter: blur(0);
-        transform: translate(-50%, -50%) scale(1);
+        transform: scale(1);
     }
 }
 
-/* Button soft rise */
 @keyframes buttonReveal {
     to {
         opacity: 1;
-        transform: translate(-50%, 0);
+        transform: translateY(0);
     }
 }
 </style>
@@ -179,13 +167,13 @@ body {
 
 <!-- MAIN CONTENT -->
 <div id="content">
-   <div class="wrapper">
-    <img src="assets/km-monogram.png" class="monogram" alt="KM Monogram">
+    <div class="wrapper">
+        <img src="assets/km-monogram.png" class="monogram" alt="KM Monogram">
 
-    <a href="invitation.html">
-        <img src="assets/open-invitation.png" class="open-btn" alt="Open Invitation">
-    </a>
-</div>
+        <a href="invitation.html">
+            <img src="assets/open-invitation.png" class="open-btn" alt="Open Invitation">
+        </a>
+    </div>
 </div>
 
 </body>
